@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+    postgres:
+        image: postgres:16
+        container_name: floworder-postgres
+        environment:
+            POSTGRES_DB: floworder
+            POSTGRES_USER: somu
+            POSTGRES_PASSWORD: somu
+
+    redis:
+        image: redis:7
+        container_name: floworder-redis
+        ports:
+            - "6379:6379"
+
+    backend:
+        image: floworder-backend
+        container_name: floworder-backend
+        ports:
+            - "8080:8080"
+        depends_on:
+            - postgres
+            - redis
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/floworder
+            SPRING_DATASOURCE_USERNAME: somu
+            SPRING_DATASOURCE_PASSWORD: somu
+            SPRING_REDIS_HOST: redis
+            SPRING_REDIS_PORT: 6379
