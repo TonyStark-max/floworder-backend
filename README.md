@@ -57,4 +57,4 @@ This flow is designed to closely resemble real-world backend order systems.
     - Rate limiting
     - Idempotency (preventing duplicate payments)
 - PostgreSQL stores all persistent data
-- Docker Compose manages service orchestration
+- Docker Compoose manages service orchestration
