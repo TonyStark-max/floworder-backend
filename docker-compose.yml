@@ -16,7 +16,7 @@ services:
             - "6379:6379"
 
     backend:
-        image: floworder-backend
+        build: .
         container_name: floworder-backend
         ports:
             - "8080:8080"
